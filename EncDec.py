@@ -25,8 +25,8 @@ Help = "-h"
 
 #Global Variables
 Option = sys.argv[1]
-ES = "Encoded String: "
-DS = "Decoded String: "
+ES = "\r\nEncoded String: \r\n"
+DS = "\r\nDecoded String: \r\n"
 
 #Functions
 def helpmenu():
@@ -55,18 +55,18 @@ EXAMPLE USES
         
         2. EncDec.py -d https%3A%2F%2Fwww.test.com%2F
 
-
+Email: jdorris@secureworks.com
 """)
 
 def ecode(encDecValue):
     newValue = urllib.parse.quote_plus(encDecValue)
     print(ES)
-    print(newValue)
+    print(newValue,'\r\n')
 
 def dcode(encDecValue):
     newValue = urllib.parse.unquote_plus(encDecValue)
     print(DS)
-    print(newValue)
+    print(newValue,'\r\n')
 
 #Main code
 if Option == encode:
