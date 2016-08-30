@@ -54,8 +54,7 @@ EXAMPLE USES
         1. EncDec.py -e https://www.test.com/
         
         2. EncDec.py -d https%3A%2F%2Fwww.test.com%2F
-
-Email: jdorris@secureworks.com
+        
 """)
 
 def ecode(encDecValue):
