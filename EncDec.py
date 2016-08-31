@@ -24,7 +24,6 @@ decode = "-d"
 Help = "-h"
 
 #Global Variables
-Option = sys.argv[1]
 ES = "\r\nEncoded String: \r\n"
 DS = "\r\nDecoded String: \r\n"
 
@@ -51,9 +50,9 @@ COMMAND LINE OPTIONS
        -d          This option is used to URL decode a string.
 
 EXAMPLE USES
-        1. EncDec.py -e https://www.test.com/
+        1. EncDec.py -e "https://www.test.com/"
         
-        2. EncDec.py -d https%3A%2F%2Fwww.test.com%2F
+        2. EncDec.py -d "https%3A%2F%2Fwww.test.com%2F"
 
 """)
 
@@ -68,11 +67,16 @@ def dcode(encDecValue):
     print(newValue,'\r\n')
 
 #Main code
-if Option == encode:
-    ecode(sys.argv[2])       
-elif Option == decode:
-    dcode(sys.argv[2])        
-elif Option == Help:
+try:
+    if sys.argv[1]:    
+        if sys.argv[1] == encode:
+            ecode(sys.argv[2])        
+        elif sys.argv[1] == decode:
+            dcode(sys.argv[2])        
+        elif sys.argv[1] == Help:
+            helpmenu()
+        else:
+            print("Whoops, no encoded or decoded string was found. See help \"-h\" option and try again!!")
+#Catch errors when user doesn't enter a value to encode or decode
+except IndexError as inputIndexError:
     helpmenu()
-else:
-    print("Whoops, no encoded or decoded string was found. See help \"-h\" option and try again!!")
